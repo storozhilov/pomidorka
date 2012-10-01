@@ -11,9 +11,9 @@
 class LightingController
 {
 public:
-	LightingController(isl::Timer& timer, isl::Relay& lampRelay, const isl::Timeout& clockTimeout) :
+	LightingController(isl::Timer& timer, isl::Relay& lightRelay, const isl::Timeout& clockTimeout) :
 		_timer(timer),
-		_lampRelay(lampRelay),
+		_lightRelay(lightRelay),
 		_clockTimeout(clockTimeout),
 		_timerTask(*this)
 	{
@@ -37,28 +37,36 @@ public:
 		virtual void execute(isl::Timer& timer, const struct timespec& lastExpiredTimestamp, size_t expiredTimestamps, const isl::Timeout& timeout)
 		{
 			isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Lighting controller task has been executed"));
-			bool currentRelayState = _controller._lampRelay.state();
-			isl::DateTime nowTime = isl::DateTime::now().time();
+			isl::DateTime now = isl::DateTime::now().time();
 			try {
-				// TODO Check periods and light sensor value!!!
-				if (nowTime.minute() % 2 == 0) {	// Switch light every minute at the moment
-					// Light is on
+				bool currentRelayState = _controller._lightRelay.state();
+				if (_controller.shouldBeLight(now)) {
+					// Light should be on
+					// TODO Check out light sensor value!
 					if (!currentRelayState) {
 						// Light is off -> turn it on
-						_controller._lampRelay.setState(true);
+						_controller._lightRelay.setState(true);
 					}
-					// Checkout relay feedback channel state
-					if (_controller._lampRelay.hasFeedback() && !_controller._lampRelay.feedbackState()) {
+					// Checkout new light relay state
+					if (!_controller._lightRelay.state()) {
+						isl::errorLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Light relay state is off after turning the light on"));
+					}
+					// Checkout relay feedback channel state if available
+					if (_controller._lightRelay.hasFeedback() && !_controller._lightRelay.feedbackState()) {
 						isl::errorLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Light is on but feedback channel is off"));
 					}
 				} else {
-					// Light is off
+					// Light should be off
 					if (currentRelayState) {
 						// Light is on -> turn it off
-						_controller._lampRelay.setState(false);
+						_controller._lightRelay.setState(false);
 					}
-					// Checkout relay feedback channel state
-					if (_controller._lampRelay.hasFeedback() && _controller._lampRelay.feedbackState()) {
+					// Checkout new light relay state
+					if (_controller._lightRelay.state()) {
+						isl::errorLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Light relay state is on after turning the light off"));
+					}
+					// Checkout relay feedback channel state if available
+					if (_controller._lightRelay.hasFeedback() && _controller._lightRelay.feedbackState()) {
 						isl::errorLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Light is off but feedback channel is on"));
 					}
 				}
@@ -79,8 +87,14 @@ private:
 
 	LightingController& operator=(const LightingController&);			// No copy
 
+	bool shouldBeLight(const isl::DateTime& dt)
+	{
+		// TODO Check periods
+		return dt.minute() % 2 == 0;						// Switch light every minute at the moment
+	}
+
 	isl::Timer& _timer;
-	isl::Relay& _lampRelay;
+	isl::Relay& _lightRelay;
 	//isl::Sensor _lightSensor;	// TODO
 	isl::Timeout _clockTimeout;
 	TimerTask _timerTask;

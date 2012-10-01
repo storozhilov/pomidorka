@@ -1,0 +1,21 @@
+F_CPU = 14745600
+mcu = 'atmega88a'
+opt = 's'
+
+env = Environment(
+CC = 'avr-gcc'
+)
+env.Append(CCFLAGS = '-g')
+env.Append(CCFLAGS = '-mmcu=%s' % mcu)
+env.Append(CCFLAGS = '-DF_CPU=%i' % F_CPU)
+env.Append(CCFLAGS = '-O%s' % opt)
+env.Append(CCFLAGS = '-Wall')
+
+target = 'bin/firmware'
+elfTarget = target + '.elf'
+hexTarget = target + '.hex'
+elfBuilder = env.Program(elfTarget, [Glob('src/*.c'), Glob('src/1-wire/*.c'), Glob('src/1-wire/common_files/*.c')])
+hexBuilder = env.Command(hexTarget, elfTarget, 'avr-objcopy -j .text -j .data -O ihex $SOURCE $TARGET')
+memoryUsageDisplayer = env.Command(None, elfTarget, 'avr-size $SOURCE')
+
+Default([hexBuilder, memoryUsageDisplayer])

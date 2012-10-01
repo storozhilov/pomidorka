@@ -1,18 +1,19 @@
+# iGreenHouse project SCons configuration file
+
 import os
 
-env = Environment(
-CCFLAGS = '-g -Wall',
-CPPPATH = './include',
-LIBS = ['islScada', 'isl', 'pthread', 'rt']
-)
-env.ParseConfig('pkg-config --cflags --libs libmodbus')
-env.Append(ENV = {'PATH' : os.environ['PATH']})
+AddOption('--build-firmware',
+		dest = 'build-firmware',
+		action = 'store_true',
+		help = 'Build firmware (the same as if \'GH_BUILD_FIRMWARE\' environment variable is set to \'yes\')')
 
-prefix = '/usr/local'
-if 'PREFIX' in os.environ:
-	prefix = os.environ['PREFIX']
+#sconscriptTargets = ['src/SConscript']
+sconscriptTargets = ['src/SConscript', 'mbclnt/SConscript']
+if GetOption('build-firmware') or os.environ.get('GH_BUILD_FIRMWARE', '').upper() == 'YES':
+	sconscriptTargets.append('firmware/SConscript')
+SConscript(sconscriptTargets)
 
-programBuilder = env.Program('bin/ghd', Glob('src/*.cxx'))
-Default(programBuilder)
-
-env.Command('uninstall', None, Delete(FindInstalledFiles()))
+# Uninstall section
+env = Environment()
+uninstaller = env.Command('uninstall', None, Delete(env.FindInstalledFiles()))
+env.Alias('uninstall', uninstaller)
