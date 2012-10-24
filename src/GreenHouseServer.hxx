@@ -12,9 +12,11 @@
 #define ENDPOINT_PARITY isl::ModbusEndpoint::EvenParity
 #define ENDPOINT_DATA_BITS isl::ModbusEndpoint::EightDataBits
 #define ENDPOINT_STOP_BITS isl::ModbusEndpoint::OneStopBit
-#define LIGHTING_RELAY_STATE_BIT_ADDR 1
-#define LIGHTING_RELAY_FEEDBACK_BIT_ADDR 2
-#define LIGHTING_SENSOR_REGISTER_ADDR 3
+//#define LIGHTING_RELAY_STATE_BIT_ADDR 1
+#define LIGHTING_RELAY_STATE_BIT_ADDR 2
+//#define LIGHTING_RELAY_FEEDBACK_BIT_ADDR 2
+#define LIGHTING_RELAY_FEEDBACK_BIT_ADDR 0
+#define LIGHTING_SENSOR_REGISTER_ADDR 4
 #define TIMER_CLOCK_TIMEOUT_SECONDS 1
 #define TIMER_CLOCK_TIMEOUT_NANOSECONDS 0
 #define LIGHTING_CONTROLLER_CLOCK_TIMEOUT_SECONDS 5
@@ -31,6 +33,7 @@ public:
 		_timer(this, isl::Timeout(TIMER_CLOCK_TIMEOUT_SECONDS, TIMER_CLOCK_TIMEOUT_NANOSECONDS)),
 		_lightningController(_timer, _lightingRelay/*, _lightingSensor*/, isl::Timeout(LIGHTING_CONTROLLER_CLOCK_TIMEOUT_SECONDS, LIGHTING_CONTROLLER_CLOCK_TIMEOUT_NANOSECONDS))
 	{
+		_modbusEndpoint.open();
 		//_networkService.addListener(isl::TcpAddrInfo(isl::TcpAddrInfo::IpV4, isl::TcpAddrInfo::WildcardAddress, 8081));
 		//_sensorsService.addListener(isl::TcpAddrInfo(isl::TcpAddrInfo::IpV4, isl::TcpAddrInfo::WildcardAddress, 8082));
 	}

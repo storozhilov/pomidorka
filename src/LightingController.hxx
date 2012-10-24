@@ -8,6 +8,8 @@
 #include <isl/ExceptionLogMessage.hxx>
 //#include <isl/DateTime.hxx>
 
+#include <iostream>
+
 class LightingController
 {
 public:
@@ -15,9 +17,14 @@ public:
 		_timer(timer),
 		_lightRelay(lightRelay),
 		_clockTimeout(clockTimeout),
-		_timerTask(*this)
+		_timerTask(*this),
+		_timerTaskId()
 	{
-		_timer.registerPeriodicTask(_timerTask, _clockTimeout);
+		_timerTaskId = _timer.registerPeriodicTask(_timerTask, _clockTimeout);
+	}
+	~LightingController()
+	{
+		_timer.removePeriodicTask(_timerTaskId);
 	}
 
 	//int addLightPeriod(const isl::DateTime& startingFrom, const isl::DateTime& finishedBefore);
@@ -37,14 +44,17 @@ public:
 		virtual void execute(isl::Timer& timer, const struct timespec& lastExpiredTimestamp, size_t expiredTimestamps, const isl::Timeout& timeout)
 		{
 			isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Lighting controller task has been executed"));
-			isl::DateTime now = isl::DateTime::now().time();
+			//isl::DateTime now = isl::DateTime::now().time();	// TODO Error here!!!
 			try {
 				bool currentRelayState = _controller._lightRelay.state();
-				if (_controller.shouldBeLight(now)) {
+				//if (_controller.shouldBeLight(now)) {
+				if (_controller.shouldBeLight(isl::DateTime::now())) {
 					// Light should be on
+					isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Light sould be ON"));
 					// TODO Check out light sensor value!
 					if (!currentRelayState) {
 						// Light is off -> turn it on
+						isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Light is OFF -> turn it ON"));
 						_controller._lightRelay.setState(true);
 					}
 					// Checkout new light relay state
@@ -57,8 +67,10 @@ public:
 					}
 				} else {
 					// Light should be off
+					isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Light sould be OFF"));
 					if (currentRelayState) {
 						// Light is on -> turn it off
+						isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Light is ON -> turn it OFF"));
 						_controller._lightRelay.setState(false);
 					}
 					// Checkout new light relay state
@@ -90,6 +102,9 @@ private:
 	bool shouldBeLight(const isl::DateTime& dt)
 	{
 		// TODO Check periods
+
+		std::cout << "dt.toString() = " << dt.toString() << ", dt.minute() = " << dt.minute() << ", dt.minute() % 2 = " << dt.minute() % 2 << std::endl;
+
 		return dt.minute() % 2 == 0;						// Switch light every minute at the moment
 	}
 
@@ -98,6 +113,7 @@ private:
 	//isl::Sensor _lightSensor;	// TODO
 	isl::Timeout _clockTimeout;
 	TimerTask _timerTask;
+	int _timerTaskId;
 };
 
 #endif
