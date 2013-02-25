@@ -43,19 +43,19 @@ private:
 
 	virtual void beforeStart()
 	{
-		isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Starting greenhouse server"));
+		isl::Log::debug().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Starting greenhouse server"));
 	}
 	virtual void afterStart()
 	{
-		isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Greenhouse server has been started"));
+		isl::Log::debug().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Greenhouse server has been started"));
 	}
 	virtual void beforeStop()
 	{
-		isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Stopping greenhouse server"));
+		isl::Log::debug().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Stopping greenhouse server"));
 	}
 	virtual void afterStop()
 	{
-		isl::debugLog().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Greenhouse server has been stopped"));
+		isl::Log::debug().log(isl::LogMessage(SOURCE_LOCATION_ARGS, "Greenhouse server has been stopped"));
 	}
 
 	isl::ModbusEndpoint _modbusEndpoint;

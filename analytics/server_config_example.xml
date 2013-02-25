@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<server webGuiPort="8080">
+  <endpoint name="endpoint_1" type="rtu" serialDevice="/dev/ttyUSB0" id="1" baud="57600" parity="E" dataBits="8" stopBits="1">
+    <switch name="switch_1_1" stateBitAddr="0" />
+    <relay name="relay_1_1" stateBitAddr="0" feedbackBitAddr="1" />
+    <sensor name="sensor_1_1" valueRegisterAddr="0" />
+    <control name="control_1_1" valueRegisterAddr="0" feedbackRegisterAddr="1" />
+    <valve name="valve_1_1" openDriveStateBitAddr="1" closeDriveStateBitAddr="2" openLimitSwitchStateBitAddr="2" closeLimitSwitchStateBitAddr="3"
+      maxOpenDurationRegisterAddr="1" maxCloseDurationRegisterAddr="2" openPowerOffReasonRegisterAddr="2" closePowerOffReasonRegisterAddr="3"
+      lastOpenDurationRegisterAddr="4" lastCloseDurationRegisterAddr="5" />
+  </endpoint>
+  <timer name="timer_1" clockTimeoutSec="0" clockTimeoutNanoSec="100000000" />
+  <1ightingController timer="timer_1" lightRelay="relay_1_1" clockTimeoutSec="5" clockTimeoutNanoSec="100000000" />
+</server>
