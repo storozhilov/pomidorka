@@ -1,0 +1,25 @@
+For Ubuntu 12.04 LTS
+
+* Install packages:
+
+$ sudo apt-get install build-essential scons scons-doc libmodbus5 libmodbus-dev subversion gcc-avr binutils-avr gdb-avr avr-libc avrdude avrdude-doc
+
+* Fetch sources:
+
+$ mkdir ~/svn/svn.it-artel.com
+$ cd ~/svn/svn.it-artel.com
+$ svn co http://svn.it-artel.com/isl
+$ svn co http://svn.it-artel.com/gh
+
+* Install ISL:
+
+$ cd isl/trunk/
+$ scons --build-scada
+$ sudo scons --build-scada install
+
+* Build greenhouse project:
+
+$ cd ../../gh/trunk
+$ scons --build-firmware
+
+Server application, MODBUS tool and firmware will be in bin/, mbclnt/ and firmware/bin/ directory respectively.
