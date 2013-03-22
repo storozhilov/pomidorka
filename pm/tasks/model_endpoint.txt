@@ -8,6 +8,14 @@
 
 Требования:
 
-* Сборка прошивки должна быть интегрирована в систему сборки проекта и собираться в OS Linux;
+* Сборка прошивки должна быть интегрирована в систему сборки проекта и собираться в OS Linux (см. для примера текущую версию прошивки в http://svn.it-artel.com/gh/trunk/firmware/);
 * MODBUS ID концевого устройства: 1;
-* TODO
+* Концевое устройство должно быть оборудовано:
+** датчиком освещения (сущность Sensor - см. ниже архитектуру);
+** реле включения освещения с обратной связью по току в контуре освещения (сущность Relay - см. ниже архитектуру);
+
+Источники информации:
+
+* http://freemodbus.berlios.de/ - свободный MODBUS-стэк для AVR;
+* http://svn.it-artel.com/gh/trunk/analytics/endpoint_device_requirements.odt - предполагаемая архитектура;
+* http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_GCC_Toolchain - установка AVR toolchain под Unix;
