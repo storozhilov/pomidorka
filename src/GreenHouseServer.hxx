@@ -2,16 +2,26 @@
 #define GREEN_HOUSE_SERVER__HXX 1
 
 #include <isl/Server.hxx>
+#include <isl/ScadaTimer.hxx>
 #include <isl/LogMessage.hxx>
 #include <isl/ModbusEndpoint.hxx>
-#include "LightingController.hxx"
+//#include "LightingController.hxx"
+#include "NatureLightingProgram.hxx"
 
 #define ENDPOINT_DEVICE "/dev/ttyUSB0"
 #define ENDPOINT_ID 1
-#define ENDPOINT_BAUD isl::ModbusEndpoint::Baud_57600
+//#define ENDPOINT_BAUD isl::ModbusEndpoint::Baud_57600
+#define ENDPOINT_BAUD isl::ModbusEndpoint::Baud_38400
 #define ENDPOINT_PARITY isl::ModbusEndpoint::EvenParity
 #define ENDPOINT_DATA_BITS isl::ModbusEndpoint::EightDataBits
 #define ENDPOINT_STOP_BITS isl::ModbusEndpoint::OneStopBit
+
+#define LIGHTING_STATUS_REGISTER_ADDRESS 0
+#define LIGHTING_INTENSITY_REGISTER_ADDRESS 1
+#define LIGHTING_LIGHT_SENSOR_REGISTER_ADDRESS 2
+#define LIGHTING_SUPPLY_VOLTAGE_REGISTER_ADDRESS 3
+#define LIGHTING_SUPPLY_CURRENT_REGISTER_ADDRESS 4
+
 //#define LIGHTING_RELAY_STATE_BIT_ADDR 1
 #define LIGHTING_RELAY_STATE_BIT_ADDR 2
 //#define LIGHTING_RELAY_FEEDBACK_BIT_ADDR 2
@@ -28,10 +38,13 @@ public:
 	GreenHouseServer(int argc, char * argv[]) :
 		isl::Server(argc, argv),
 		_modbusEndpoint(ENDPOINT_DEVICE, ENDPOINT_ID, ENDPOINT_BAUD, ENDPOINT_PARITY, ENDPOINT_DATA_BITS, ENDPOINT_STOP_BITS),
-		_lightingRelay(_modbusEndpoint, LIGHTING_RELAY_STATE_BIT_ADDR, LIGHTING_RELAY_FEEDBACK_BIT_ADDR),
-		_lightingSensor(_modbusEndpoint, LIGHTING_SENSOR_REGISTER_ADDR),
-		_timer(this, isl::Timeout(TIMER_CLOCK_TIMEOUT_SECONDS, TIMER_CLOCK_TIMEOUT_NANOSECONDS)),
-		_lightningController(_timer, _lightingRelay/*, _lightingSensor*/, isl::Timeout(LIGHTING_CONTROLLER_CLOCK_TIMEOUT_SECONDS, LIGHTING_CONTROLLER_CLOCK_TIMEOUT_NANOSECONDS))
+		//_lightingRelay(_modbusEndpoint, LIGHTING_RELAY_STATE_BIT_ADDR, LIGHTING_RELAY_FEEDBACK_BIT_ADDR),
+		//_lightingSensor(_modbusEndpoint, LIGHTING_SENSOR_REGISTER_ADDR),
+		//_timer(this, isl::Timeout(TIMER_CLOCK_TIMEOUT_SECONDS, TIMER_CLOCK_TIMEOUT_NANOSECONDS)),
+		//_lightningController(_timer, _lightingRelay/*, _lightingSensor*/, isl::Timeout(LIGHTING_CONTROLLER_CLOCK_TIMEOUT_SECONDS, LIGHTING_CONTROLLER_CLOCK_TIMEOUT_NANOSECONDS)),
+		_scadaTimer(this/*, isl::Timeout(TIMER_CLOCK_TIMEOUT_SECONDS, TIMER_CLOCK_TIMEOUT_NANOSECONDS)*/),
+		_natureLightingProgram(_scadaTimer, _modbusEndpoint, LIGHTING_STATUS_REGISTER_ADDRESS, LIGHTING_INTENSITY_REGISTER_ADDRESS,
+				LIGHTING_LIGHT_SENSOR_REGISTER_ADDRESS, LIGHTING_SUPPLY_VOLTAGE_REGISTER_ADDRESS, LIGHTING_SUPPLY_CURRENT_REGISTER_ADDRESS)
 	{
 		_modbusEndpoint.open();
 		//_networkService.addListener(isl::TcpAddrInfo(isl::TcpAddrInfo::IpV4, isl::TcpAddrInfo::WildcardAddress, 8081));
@@ -59,10 +72,12 @@ private:
 	}
 
 	isl::ModbusEndpoint _modbusEndpoint;
-	isl::Relay _lightingRelay;
-	isl::Sensor _lightingSensor;
-	isl::Timer _timer;
-	LightingController _lightningController;
+//	isl::Relay _lightingRelay;
+//	isl::Sensor _lightingSensor;
+//	isl::Timer _timer;
+//	LightingController _lightningController;
+	isl::ScadaTimer _scadaTimer;
+	NatureLightingProgram _natureLightingProgram;
 };
 
 

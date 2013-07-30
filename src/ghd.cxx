@@ -1,4 +1,4 @@
-/*#include <isl/PidFile.hxx>
+#include <isl/PidFile.hxx>
 #include <isl/Log.hxx>
 #include <isl/DirectLogger.hxx>
 #include <isl/StreamLogTarget.hxx>
@@ -16,4 +16,4 @@ int main(int argc, char *argv[])
 	isl::Log::error().connect(coutLogTarget);
 	GreenHouseServer srv(argc, argv);
 	srv.run();
-}*/
+}

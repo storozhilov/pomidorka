@@ -14,6 +14,11 @@
 #define GET_REGISTER_CMD "gr"
 #define SET_REGISTER_CMD "sr"
 
+#define BAUD isl::ModbusEndpoint::Baud_38400
+#define PARITY isl::ModbusEndpoint::EvenParity
+#define DATA_BITS isl::ModbusEndpoint::EightDataBits
+#define STOP_BITS isl::ModbusEndpoint::OneStopBit
+
 void printUsage()
 {
 	std::cout << "Usage mbclnt <tty_device> <endpoint_id> <command> <arg_1> [<arg_2> ...]" << std::endl <<
@@ -67,7 +72,7 @@ int main(int argc, char *argv[])
 	}
 	//std::cout << "Device id is " << endpointId << ", oss.fail() is " << oss.fail() << std::endl;
 	try {
-		isl::ModbusEndpoint me(argv[1], endpointId, isl::ModbusEndpoint::Baud_57600, isl::ModbusEndpoint::EvenParity, isl::ModbusEndpoint::EightDataBits, isl::ModbusEndpoint::OneStopBit);
+		isl::ModbusEndpoint me(argv[1], endpointId, BAUD, PARITY, DATA_BITS, STOP_BITS);
 		me.open();
 		if (!strcmp(argv[3], GET_INPUT_BIT_CMD)) {
 			// Read input bits
@@ -194,6 +199,14 @@ int main(int argc, char *argv[])
 			std::cout << "OK. Result is: ";
 			dumpVector(registers);
 			std::cout << std::endl;
+
+			sleep(1);
+			std::cout << "Sending \"read holding registers\" (0x03) MODBUS command to the endpoint ... ";
+			registers = me.readRegisters(registerAddr, registersAmount);
+			std::cout << "OK. Result is: ";
+
+			dumpVector(registers);
+			std::cout << std::endl;
 		} else if (!strcmp(argv[3], SET_REGISTER_CMD)) {
 			// Write register
 			if (argc < 6) {
@@ -216,6 +229,12 @@ int main(int argc, char *argv[])
 				std::cerr << "Invalid register value (arg 2): " << argv[5] << std::endl;
 				exit(1);
 			}
+			std::cout << "Sending \"preset single register\" (0x06) MODBUS command to the endpoint ... ";
+			me.writeRegister(registerAddr, registerValue);
+			std::cout << "OK." << std::endl;
+
+			sleep(1);
+
 			std::cout << "Sending \"preset single register\" (0x06) MODBUS command to the endpoint ... ";
 			me.writeRegister(registerAddr, registerValue);
 			std::cout << "OK." << std::endl;

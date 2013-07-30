@@ -8,7 +8,7 @@ AddOption('--build-firmware',
 		help = 'Build firmware (the same as if \'GH_BUILD_FIRMWARE\' environment variable is set to \'yes\')')
 
 #sconscriptTargets = ['src/SConscript']
-sconscriptTargets = ['src/SConscript', 'mbclnt/SConscript']
+sconscriptTargets = ['src/SConscript', 'mbclnt/SConscript', 'tests/SConscript']
 if GetOption('build-firmware') or os.environ.get('GH_BUILD_FIRMWARE', '').upper() == 'YES':
 	sconscriptTargets.append('firmware/SConscript')
 SConscript(sconscriptTargets)

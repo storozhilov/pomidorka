@@ -1,0 +1,16 @@
+import os
+
+#env = Environment(
+#CCFLAGS = ['-g', '-Wall'],
+#CPPPATH = ['include', '../../include'],
+#LIBS = 'dl'
+#)
+env = Environment(
+CCFLAGS = ['-g', '-Wall']
+)
+env.Append(ENV = {'PATH' : os.environ['PATH']})
+env.ParseConfig('pkg-config --cflags --libs libmodbus')
+
+# Build section
+endpointDeviceTestBuilder = env.Program('endpoint_device_test', 'endpoint_device_test.cxx')
+Default(endpointDeviceTestBuilder)
