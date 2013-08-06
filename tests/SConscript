@@ -13,4 +13,5 @@ env.ParseConfig('pkg-config --cflags --libs libmodbus')
 
 # Build section
 endpointDeviceTestBuilder = env.Program('endpoint_device_test', 'endpoint_device_test.cxx')
-Default(endpointDeviceTestBuilder)
+endpointDeviceRawTestBuilder = env.Program('endpoint_device_raw_test', 'endpoint_device_raw_test.cxx')
+Default([endpointDeviceTestBuilder, endpointDeviceRawTestBuilder])
