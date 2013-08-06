@@ -146,8 +146,18 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	if (!strcmp(argv[1], GET_REGISTER_CMD)) {
+		int res = test_cmd(readRegistersCmd, sizeof(readRegistersCmd));
+		if (res != 0) {
+			return res;
+		}
+		usleep(200);
 		return test_cmd(readRegistersCmd, sizeof(readRegistersCmd));
 	} else if (!strcmp(argv[1], SET_REGISTER_CMD)) {
+		int res = test_cmd(writeRegisterCmd, sizeof(writeRegisterCmd));
+		if (res != 0) {
+			return res;
+		}
+		usleep(200);
 		return test_cmd(writeRegisterCmd, sizeof(writeRegisterCmd));
 	} else {
 		fprintf(stderr, "Invalid command: '%s'\n", argv[1]);
