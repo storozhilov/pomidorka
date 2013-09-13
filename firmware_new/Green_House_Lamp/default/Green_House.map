@@ -1,0 +1,711 @@
+Archive member included because of file (symbol)
+
+d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                              porttimer.o (__mulsi3)
+d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                              mbrtu.o (__udivmodsi4)
+d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                              d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168p.o (exit)
+d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                              Green_House.o (__do_copy_data)
+d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                              Green_House.o (__do_clear_bss)
+d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                              mbfuncother.o (memcpy)
+
+Allocating common symbols
+Common symbol       size              file
+
+pxMBFrameCBTransmitterEmpty
+                    0x2               mb.o
+pxMBPortCBTimerExpired
+                    0x2               mb.o
+EEPROM_value        0x1               Green_House.o
+ucRTUBuf            0x100             mbrtu.o
+pxMBFrameCBByteReceived
+                    0x2               mb.o
+pxMBFrameCBTransmitFSMCur
+                    0x2               mb.o
+pxMBFrameCBReceiveFSMCur
+                    0x2               mb.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168p.o
+LOAD Green_House.o
+LOAD adc.o
+LOAD eeprom.o
+LOAD mb.o
+LOAD mbascii.o
+LOAD mbcrc.o
+LOAD mbfunccoils.o
+LOAD mbfuncdiag.o
+LOAD mbfuncdisc.o
+LOAD mbfuncholding.o
+LOAD mbfuncinput.o
+LOAD mbfuncother.o
+LOAD mbrtu.o
+LOAD mbtcp.o
+LOAD mbutils.o
+LOAD portevent.o
+LOAD portserial.o
+LOAD porttimer.o
+LOAD Step_motor.o
+LOAD d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
+LOAD d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x1570
+ *(.vectors)
+ .vectors       0x00000000       0x68 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168p.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x00000068      0x200 mbcrc.o
+                0x00000268                . = ALIGN (0x2)
+                0x00000268                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000268        0x0 linker stubs
+ *(.trampolines*)
+                0x00000268                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000268                __ctors_start = .
+ *(.ctors)
+                0x00000268                __ctors_end = .
+                0x00000268                __dtors_start = .
+ *(.dtors)
+                0x00000268                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000268        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168p.o
+                0x00000268                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000268        0xc d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168p.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000274       0x16 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00000274                __do_copy_data
+ .init4         0x0000028a       0x10 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x0000028a                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000029a        0x8 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168p.o
+ *(.init9)
+ *(.text)
+ .text          0x000002a2        0x4 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168p.o
+                0x000002a2                __vector_22
+                0x000002a2                __vector_1
+                0x000002a2                __vector_24
+                0x000002a2                __vector_12
+                0x000002a2                __bad_interrupt
+                0x000002a2                __vector_6
+                0x000002a2                __vector_3
+                0x000002a2                __vector_23
+                0x000002a2                __vector_25
+                0x000002a2                __vector_13
+                0x000002a2                __vector_17
+                0x000002a2                __vector_7
+                0x000002a2                __vector_5
+                0x000002a2                __vector_4
+                0x000002a2                __vector_9
+                0x000002a2                __vector_2
+                0x000002a2                __vector_15
+                0x000002a2                __vector_8
+                0x000002a2                __vector_14
+                0x000002a2                __vector_10
+                0x000002a2                __vector_16
+                0x000002a2                __vector_20
+ .text          0x000002a6      0x2e6 Green_House.o
+                0x000002a6                PWM_Init
+                0x000002bc                eMBRegDiscreteCB
+                0x000004e8                main
+                0x000003ae                __vector_21
+                0x0000034a                eMBRegInputCB
+                0x000002c0                eMBRegHoldingCB
+                0x000002b8                eMBRegCoilsCB
+ .text          0x0000058c       0x16 adc.o
+                0x0000058c                ADC_Init
+ .text          0x000005a2       0x1e eeprom.o
+                0x000005b2                EEPROM_read
+                0x000005a2                EEPROM_write
+ .text          0x000005c0      0x2ca mb.o
+                0x0000068c                eMBDisable
+                0x0000064c                eMBClose
+                0x000006b4                eMBPoll
+                0x0000066e                eMBEnable
+                0x000005c0                eMBRegisterCB
+                0x000007da                eMBInit
+ .text          0x0000088a        0x0 mbascii.o
+ .text          0x0000088a       0x3e mbcrc.o
+                0x0000088a                usMBCRC16
+ .text          0x000008c8      0x1b2 mbfunccoils.o
+                0x00000950                eMBFuncWriteCoil
+                0x000009ca                eMBFuncReadCoils
+                0x000008c8                eMBFuncWriteMultipleCoils
+ .text          0x00000a7a        0x0 mbfuncdiag.o
+ .text          0x00000a7a       0xae mbfuncdisc.o
+                0x00000a7a                eMBFuncReadDiscreteInputs
+ .text          0x00000b28      0x248 mbfuncholding.o
+                0x00000c3c                eMBFuncReadHoldingRegister
+                0x00000d34                eMBFuncWriteHoldingRegister
+                0x00000cc8                eMBFuncWriteMultipleHoldingRegister
+                0x00000b28                eMBFuncReadWriteMultipleHoldingRegister
+ .text          0x00000d70       0x94 mbfuncinput.o
+                0x00000d70                eMBFuncReadInputRegister
+ .text          0x00000e04       0x98 mbfuncother.o
+                0x00000e3c                eMBSetSlaveID
+                0x00000e04                eMBFuncReportSlaveID
+ .text          0x00000e9c      0x2e6 mbrtu.o
+                0x00000fe4                eMBRTUStart
+                0x00001110                eMBRTUInit
+                0x00000edc                xMBRTUTransmitFSM
+                0x00000f52                xMBRTUReceiveFSM
+                0x00000ffa                eMBRTUSend
+                0x00000e9c                xMBRTUTimerT35Expired
+                0x000010a6                eMBRTUReceive
+                0x00000eca                eMBRTUStop
+ .text          0x00001182        0x0 mbtcp.o
+ .text          0x00001182       0xe0 mbutils.o
+                0x000011f6                xMBUtilGetBits
+                0x00001182                xMBUtilSetBits
+                0x00001244                prveMBError2Exception
+ .text          0x00001262       0x2e portevent.o
+                0x00001262                xMBPortEventInit
+                0x00001278                xMBPortEventGet
+                0x0000126a                xMBPortEventPost
+ .text          0x00001290      0x168 portserial.o
+                0x00001290                vMBPortSerialEnable
+                0x00001350                xMBPortSerialGetByte
+                0x000012c8                xMBPortSerialInit
+                0x0000135c                __vector_19
+                0x00001346                xMBPortSerialPutByte
+                0x000013aa                __vector_18
+ .text          0x000013f8       0xd6 porttimer.o
+                0x00001480                __vector_11
+                0x00001444                xMBPortTimersInit
+                0x0000142c                vMBPortTimersDisable
+                0x000013f8                vMBPortTimersEnable
+ .text          0x000014ce        0xa Step_motor.o
+                0x000014ce                Step_Motor_Init
+ .text          0x000014d8        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .text          0x000014d8        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x000014d8        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x000014d8        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text          0x000014d8        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text          0x000014d8        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                0x000014d8                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x000014d8       0x3e d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                0x000014d8                __mulsi3
+ .text.libgcc   0x00001516       0x44 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00001516                __udivmodsi4
+ .text.libgcc   0x0000155a        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x0000155a        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000155a        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x0000155a       0x12 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                0x0000155a                memcpy
+                0x0000156c                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000156c        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x0000156c                exit
+                0x0000156c                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000156c        0x4 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00001570                _etext = .
+
+.data           0x00800100       0x34 load address 0x00001570
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168p.o
+ .data          0x00800100        0x3 Green_House.o
+ .data          0x00800103        0x0 adc.o
+ .data          0x00800103        0x0 eeprom.o
+ .data          0x00800103       0x31 mb.o
+ .data          0x00800134        0x0 mbascii.o
+ .data          0x00800134        0x0 mbcrc.o
+ .data          0x00800134        0x0 mbfunccoils.o
+ .data          0x00800134        0x0 mbfuncdiag.o
+ .data          0x00800134        0x0 mbfuncdisc.o
+ .data          0x00800134        0x0 mbfuncholding.o
+ .data          0x00800134        0x0 mbfuncinput.o
+ .data          0x00800134        0x0 mbfuncother.o
+ .data          0x00800134        0x0 mbrtu.o
+ .data          0x00800134        0x0 mbtcp.o
+ .data          0x00800134        0x0 mbutils.o
+ .data          0x00800134        0x0 portevent.o
+ .data          0x00800134        0x0 portserial.o
+ .data          0x00800134        0x0 porttimer.o
+ .data          0x00800134        0x0 Step_motor.o
+ .data          0x00800134        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .data          0x00800134        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x00800134        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x00800134        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .data          0x00800134        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .data          0x00800134        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800134                . = ALIGN (0x2)
+                0x00800134                _edata = .
+                0x00800134                PROVIDE (__data_end, .)
+
+.bss            0x00800134      0x157
+                0x00800134                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800134        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm168p.o
+ .bss           0x00800134        0xb Green_House.o
+                0x00800134                State
+ .bss           0x0080013f        0x0 adc.o
+ .bss           0x0080013f        0x0 eeprom.o
+ .bss           0x0080013f       0x13 mb.o
+ .bss           0x00800152        0x0 mbascii.o
+ .bss           0x00800152        0x0 mbcrc.o
+ .bss           0x00800152        0x0 mbfunccoils.o
+ .bss           0x00800152        0x0 mbfuncdiag.o
+ .bss           0x00800152        0x0 mbfuncdisc.o
+ .bss           0x00800152        0x0 mbfuncholding.o
+ .bss           0x00800152        0x0 mbfuncinput.o
+ .bss           0x00800152       0x22 mbfuncother.o
+ .bss           0x00800174        0x8 mbrtu.o
+ .bss           0x0080017c        0x0 mbtcp.o
+ .bss           0x0080017c        0x0 mbutils.o
+ .bss           0x0080017c        0x2 portevent.o
+ .bss           0x0080017e        0x0 portserial.o
+ .bss           0x0080017e        0x2 porttimer.o
+ .bss           0x00800180        0x0 Step_motor.o
+ .bss           0x00800180        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .bss           0x00800180        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x00800180        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x00800180        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .bss           0x00800180        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x00800180        0x0 d:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800180        0x1 Green_House.o
+                0x00800180                EEPROM_value
+ COMMON         0x00800181        0xa mb.o
+                0x00800181                pxMBFrameCBTransmitterEmpty
+                0x00800183                pxMBPortCBTimerExpired
+                0x00800185                pxMBFrameCBByteReceived
+                0x00800187                pxMBFrameCBTransmitFSMCur
+                0x00800189                pxMBFrameCBReceiveFSMCur
+ COMMON         0x0080018b      0x100 mbrtu.o
+                0x0080018b                ucRTUBuf
+                0x0080028b                PROVIDE (__bss_end, .)
+                0x00001570                __data_load_start = LOADADDR (.data)
+                0x000015a4                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x0080028b        0x0
+                0x0080028b                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x0080028b                PROVIDE (__noinit_end, .)
+                0x0080028b                _end = .
+                0x0080028b                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x200
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 Green_House.o
+ .debug_aranges
+                0x00000020       0x20 adc.o
+ .debug_aranges
+                0x00000040       0x20 eeprom.o
+ .debug_aranges
+                0x00000060       0x20 mb.o
+ .debug_aranges
+                0x00000080       0x20 mbcrc.o
+ .debug_aranges
+                0x000000a0       0x20 mbfunccoils.o
+ .debug_aranges
+                0x000000c0       0x20 mbfuncdisc.o
+ .debug_aranges
+                0x000000e0       0x20 mbfuncholding.o
+ .debug_aranges
+                0x00000100       0x20 mbfuncinput.o
+ .debug_aranges
+                0x00000120       0x20 mbfuncother.o
+ .debug_aranges
+                0x00000140       0x20 mbrtu.o
+ .debug_aranges
+                0x00000160       0x20 mbutils.o
+ .debug_aranges
+                0x00000180       0x20 portevent.o
+ .debug_aranges
+                0x000001a0       0x20 portserial.o
+ .debug_aranges
+                0x000001c0       0x20 porttimer.o
+ .debug_aranges
+                0x000001e0       0x20 Step_motor.o
+
+.debug_pubnames
+                0x00000000      0x61b
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0xa0 Green_House.o
+ .debug_pubnames
+                0x000000a0       0x1f adc.o
+ .debug_pubnames
+                0x000000bf       0x33 eeprom.o
+ .debug_pubnames
+                0x000000f2       0xf8 mb.o
+ .debug_pubnames
+                0x000001ea       0x20 mbcrc.o
+ .debug_pubnames
+                0x0000020a       0x5a mbfunccoils.o
+ .debug_pubnames
+                0x00000264       0x30 mbfuncdisc.o
+ .debug_pubnames
+                0x00000294       0xa5 mbfuncholding.o
+ .debug_pubnames
+                0x00000339       0x2f mbfuncinput.o
+ .debug_pubnames
+                0x00000368       0x3d mbfuncother.o
+ .debug_pubnames
+                0x000003a5       0xb3 mbrtu.o
+ .debug_pubnames
+                0x00000458       0x52 mbutils.o
+ .debug_pubnames
+                0x000004aa       0x50 portevent.o
+ .debug_pubnames
+                0x000004fa       0x92 portserial.o
+ .debug_pubnames
+                0x0000058c       0x69 porttimer.o
+ .debug_pubnames
+                0x000005f5       0x26 Step_motor.o
+
+.debug_info     0x00000000     0x2565
+ *(.debug_info)
+ .debug_info    0x00000000      0x391 Green_House.o
+ .debug_info    0x00000391       0x72 adc.o
+ .debug_info    0x00000403       0xbe eeprom.o
+ .debug_info    0x000004c1      0x6e2 mb.o
+ .debug_info    0x00000ba3       0x73 mbascii.o
+ .debug_info    0x00000c16      0x196 mbcrc.o
+ .debug_info    0x00000dac      0x2e9 mbfunccoils.o
+ .debug_info    0x00001095        0x0 mbfuncdiag.o
+ .debug_info    0x00001095      0x1b6 mbfuncdisc.o
+ .debug_info    0x0000124b      0x359 mbfuncholding.o
+ .debug_info    0x000015a4      0x1a7 mbfuncinput.o
+ .debug_info    0x0000174b      0x217 mbfuncother.o
+ .debug_info    0x00001962      0x42a mbrtu.o
+ .debug_info    0x00001d8c       0x73 mbtcp.o
+ .debug_info    0x00001dff      0x27a mbutils.o
+ .debug_info    0x00002079      0x151 portevent.o
+ .debug_info    0x000021ca      0x20e portserial.o
+ .debug_info    0x000023d8      0x11b porttimer.o
+ .debug_info    0x000024f3       0x72 Step_motor.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0xd12
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x13c Green_House.o
+ .debug_abbrev  0x0000013c       0x3f adc.o
+ .debug_abbrev  0x0000017b       0x76 eeprom.o
+ .debug_abbrev  0x000001f1      0x1fa mb.o
+ .debug_abbrev  0x000003eb       0x2a mbascii.o
+ .debug_abbrev  0x00000415       0xd8 mbcrc.o
+ .debug_abbrev  0x000004ed       0xdb mbfunccoils.o
+ .debug_abbrev  0x000005c8        0x1 mbfuncdiag.o
+ .debug_abbrev  0x000005c9       0x98 mbfuncdisc.o
+ .debug_abbrev  0x00000661       0xb1 mbfuncholding.o
+ .debug_abbrev  0x00000712       0x98 mbfuncinput.o
+ .debug_abbrev  0x000007aa       0xbe mbfuncother.o
+ .debug_abbrev  0x00000868      0x120 mbrtu.o
+ .debug_abbrev  0x00000988       0x2a mbtcp.o
+ .debug_abbrev  0x000009b2       0xe6 mbutils.o
+ .debug_abbrev  0x00000a98       0xb3 portevent.o
+ .debug_abbrev  0x00000b4b       0xe2 portserial.o
+ .debug_abbrev  0x00000c2d       0xa6 porttimer.o
+ .debug_abbrev  0x00000cd3       0x3f Step_motor.o
+
+.debug_line     0x00000000     0x17fe
+ *(.debug_line)
+ .debug_line    0x00000000      0x2d0 Green_House.o
+ .debug_line    0x000002d0       0x72 adc.o
+ .debug_line    0x00000342       0xb5 eeprom.o
+ .debug_line    0x000003f7      0x357 mb.o
+ .debug_line    0x0000074e       0x3e mbascii.o
+ .debug_line    0x0000078c       0xc7 mbcrc.o
+ .debug_line    0x00000853      0x235 mbfunccoils.o
+ .debug_line    0x00000a88       0x24 mbfuncdiag.o
+ .debug_line    0x00000aac      0x122 mbfuncdisc.o
+ .debug_line    0x00000bce      0x29b mbfuncholding.o
+ .debug_line    0x00000e69      0x103 mbfuncinput.o
+ .debug_line    0x00000f6c       0xd3 mbfuncother.o
+ .debug_line    0x0000103f      0x2ce mbrtu.o
+ .debug_line    0x0000130d       0x3e mbtcp.o
+ .debug_line    0x0000134b      0x10d mbutils.o
+ .debug_line    0x00001458       0xc6 portevent.o
+ .debug_line    0x0000151e      0x157 portserial.o
+ .debug_line    0x00001675      0x118 porttimer.o
+ .debug_line    0x0000178d       0x71 Step_motor.o
+
+.debug_frame    0x00000000      0x450
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x80 Green_House.o
+ .debug_frame   0x00000080       0x20 adc.o
+ .debug_frame   0x000000a0       0x30 eeprom.o
+ .debug_frame   0x000000d0       0x70 mb.o
+ .debug_frame   0x00000140       0x20 mbcrc.o
+ .debug_frame   0x00000160       0x40 mbfunccoils.o
+ .debug_frame   0x000001a0       0x20 mbfuncdisc.o
+ .debug_frame   0x000001c0       0x50 mbfuncholding.o
+ .debug_frame   0x00000210       0x20 mbfuncinput.o
+ .debug_frame   0x00000230       0x30 mbfuncother.o
+ .debug_frame   0x00000260       0x90 mbrtu.o
+ .debug_frame   0x000002f0       0x40 mbutils.o
+ .debug_frame   0x00000330       0x40 portevent.o
+ .debug_frame   0x00000370       0x70 portserial.o
+ .debug_frame   0x000003e0       0x50 porttimer.o
+ .debug_frame   0x00000430       0x20 Step_motor.o
+
+.debug_str      0x00000000      0xd71
+ *(.debug_str)
+ .debug_str     0x00000000      0x255 Green_House.o
+                                0x294 (size before relaxing)
+ .debug_str     0x00000255       0x12 adc.o
+                                 0xc3 (size before relaxing)
+ .debug_str     0x00000267       0x36 eeprom.o
+                                 0xe7 (size before relaxing)
+ .debug_str     0x0000029d      0x3f2 mb.o
+                                0x5a5 (size before relaxing)
+ .debug_str     0x0000068f        0xd mbascii.o
+                                 0xe0 (size before relaxing)
+ .debug_str     0x0000069c       0x4f mbcrc.o
+                                0x150 (size before relaxing)
+ .debug_str     0x000006eb       0xb4 mbfunccoils.o
+                                0x314 (size before relaxing)
+ .debug_str     0x0000079f       0x38 mbfuncdisc.o
+                                0x2ac (size before relaxing)
+ .debug_str     0x000007d7      0x106 mbfuncholding.o
+                                0x38a (size before relaxing)
+ .debug_str     0x000008dd       0x2a mbfuncinput.o
+                                0x2a0 (size before relaxing)
+ .debug_str     0x00000907       0x78 mbfuncother.o
+                                0x2ce (size before relaxing)
+ .debug_str     0x0000097f      0x191 mbrtu.o
+                                0x389 (size before relaxing)
+ .debug_str     0x00000b10        0xb mbtcp.o
+                                 0xde (size before relaxing)
+ .debug_str     0x00000b1b       0xa3 mbutils.o
+                                0x2db (size before relaxing)
+ .debug_str     0x00000bbe       0x6b portevent.o
+                                0x18b (size before relaxing)
+ .debug_str     0x00000c29       0xae portserial.o
+                                0x212 (size before relaxing)
+ .debug_str     0x00000cd7       0x7a porttimer.o
+                                0x170 (size before relaxing)
+ .debug_str     0x00000d51       0x20 Step_motor.o
+                                 0xd1 (size before relaxing)
+
+.debug_loc      0x00000000     0x1562
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x1fa Green_House.o
+ .debug_loc     0x000001fa       0x18 eeprom.o
+ .debug_loc     0x00000212      0x2d1 mb.o
+ .debug_loc     0x000004e3       0x8c mbcrc.o
+ .debug_loc     0x0000056f      0x341 mbfunccoils.o
+ .debug_loc     0x000008b0      0x135 mbfuncdisc.o
+ .debug_loc     0x000009e5      0x439 mbfuncholding.o
+ .debug_loc     0x00000e1e      0x10c mbfuncinput.o
+ .debug_loc     0x00000f2a      0x115 mbfuncother.o
+ .debug_loc     0x0000103f      0x28c mbrtu.o
+ .debug_loc     0x000012cb      0x106 mbutils.o
+ .debug_loc     0x000013d1       0x4e portevent.o
+ .debug_loc     0x0000141f      0x105 portserial.o
+ .debug_loc     0x00001524       0x3e porttimer.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(Green_House.elf elf32-avr)
+LOAD linker stubs

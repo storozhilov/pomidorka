@@ -5,10 +5,12 @@
 #include "GreenHouseServer.hxx"
 #include <iostream>
 
+#define PID_FILE_NAME "ghd.pid"
+
 int main(int argc, char *argv[])
 {
 	//isl::daemonize();
-	isl::PidFile pidFile("ghd.pid");
+	isl::PidFile pidFile(PID_FILE_NAME);
 	isl::DirectLogger logger;
 	isl::StreamLogTarget coutLogTarget(logger, std::cout);
 	isl::Log::debug().connect(coutLogTarget);

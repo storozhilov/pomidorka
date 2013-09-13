@@ -1,0 +1,1 @@
+mbfuncdiag.o: ../mbfuncdiag.c

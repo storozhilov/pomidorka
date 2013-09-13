@@ -10,23 +10,27 @@ public:
 	/*!
 	 * \param scadaTimer SCADA timer to register a program in
 	 */
-	NatureLightingProgram(isl::ScadaTimer& scadaTimer, isl::ModbusEndpoint& modbusEndpoint, int statusRegisterAddr, int intensityRegisterAddr,
-			int lightSensorRegisterAddr, int supplyVoltageRegisterAddr, int supplyCurrentRegisterAddr) :
-		AbstractLightingProgram(scadaTimer, modbusEndpoint, statusRegisterAddr, intensityRegisterAddr,
-				lightSensorRegisterAddr, supplyVoltageRegisterAddr, supplyCurrentRegisterAddr)
+	NatureLightingProgram(isl::ScadaTimer& scadaTimer, isl::ModbusEndpoint& modbusEndpoint, int statusRegisterAddr, int lightSensorRegisterAddr,
+                        int lampSupplyLevelRegisterAddr, int supplyVoltageRegisterAddr, int supplyCurrentRegisterAddr) :
+		AbstractLightingProgram(scadaTimer, modbusEndpoint, statusRegisterAddr, lightSensorRegisterAddr,
+                                lampSupplyLevelRegisterAddr, supplyVoltageRegisterAddr, supplyCurrentRegisterAddr)
 	{}
 protected:
-	//! Returns current light intensity in per-cents: result should be in [0.0 .. 100.0]
-	virtual double lightIntensity()
+	//! Returns current desired light intensity in per-cents (0.0-100.0)
+        /*!
+         * TODO: Implementation should return intensity from particular place on Earth
+         */
+	virtual double desiredLightIntensity()
 	{
-		isl::Timestamp now = isl::Timestamp::now();
-		int second = now.second() % 60;
-		if (second > 30) {
-			second = 60 - second;
+		/*isl::Timestamp now = isl::Timestamp::now();
+		
+		int level = now.second() % 10 * 10 + now.nanoSecond() / 100000000L;
+		if (level > 50) {
+			level = 100 - level;
 		}
-		return static_cast<double>(second) / 30.0 * 100.0;
-		//return static_cast<double>(now.second() );
-		//return 100.0;
+		return static_cast<double>(level) * 2.0;*/
+
+                return 50.0;
 	}
 };
 
