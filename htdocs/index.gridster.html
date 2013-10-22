@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <title>Greenhouse server WEB-console</title>
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.10.3.custom.css" />
+    <!--<link rel="stylesheet" href="/css/layout-default.css" />-->
+    <link rel="stylesheet" href="/css/jquery.gridster.css" />
+    <link rel="stylesheet" href="/css/application.css" />
+    <!-- Scripts -->
+    <script src="/js/jquery-1.9.1.js"></script>
+    <script src="/js/jquery-ui-1.10.3.custom.js"></script>
+    <!--<script src="/js/jquery.layout-1.2.0.js"></script>-->
+    <script src="/js/jquery.gridster.js"></script>
+    <script src="/js/raphael.2.1.2.js"></script>
+    <!--<script src="/js/raphael.2.1.0.min.js"></script>-->
+    <script src="/js/justgage.1.0.1.js"></script>
+    <script src="/js/gauge.js"></script>
+    <script src="/js/jquery.gauge.js"></script>
+    <script src="/application.js"></script>
+  </head>
+  <body>
+    <div class="gridster">
+      <ul class="gridster">
+        <li class="gridster" data-row="1" data-col="1" data-sizex="1" data-sizey="1"><h3>Lighting
+          subsystem</h3>
+          <table>
+            <tbody>
+              <tr>
+                <td><div id="CurrentLightIntensityGauge" class="large_gauge"></div></td>
+                <td><div id="DesiredLightIntensityGauge" class="large_gauge"></div></td>
+              </tr>
+<!--              <tr>
+                <td>&nbsp;</td>
+                <td><input id="ManualDesiredLightIntensityCheckbox" type="checkbox" /></td>
+              </tr>-->
+              <tr>
+                <td><div id="LightSensorRegisterValueGauge" class="large_gauge"></div></td>
+                <td><div id="LampSupplyRegisterValueGauge" class="large_gauge"></div></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="params_table">
+            <tbody>
+              <tr>
+                <td>Manual lamp supply level</td>
+                <td><input id="ManualLampSupplyLevelCheckbox" type="checkbox" /></td>
+                <td><div id="ManualLampSupplyLevelSlider" class="slider"></div></td>
+                <td><span id="ManualLampSupplyLevelLabel">0</span></td>
+              </tr>
+            </tbody>
+          </table>
+<!--          <table>
+            <tbody>
+              <tr>
+                <td>Desired light intensity, %:</td>
+                <td><strong><span id="DesiredLightIntensity">n/a</span></strong></td>
+                <td><input id="ManualDesiredIntensityCheckbox" type="checkbox" /> manual</td>
+              </tr>
+              <tr>
+                <td>Current light intensity, %:</td>
+                <td><strong><span id="CurrentLightIntensity">n/a</span></strong></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Field device status register value:</td>
+                <td><strong><span id="StatusRegisterValue">n/a</span></strong></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Light sensor register value:</td>
+                <td><strong><span id="LightSensorRegisterValue">n/a</span></strong></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Lamp supply level register value:</td>
+                <td><strong><span id="LampSupplyLevelRegisterValue">n/a</span></strong></td>
+                <td>&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>-->
+        </li>
+        <li class="gridster" data-row="1" data-col="2" data-sizex="1" data-sizey="1"><h3>Heating
+          subsystem</h3></li>
+        <li class="gridster" data-row="2" data-col="1" data-sizex="1" data-sizey="1"><h3>Ventilation
+          subsystem</h3></li>
+        <li class="gridster" data-row="2" data-col="2" data-sizex="1" data-sizey="1"><h3>Watering
+          subsystem</h3></li>
+      </ul>
+    </div>
+<!--    <div class="gridster">
+      <ul class="gridster">
+        <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"></li>
+        <li data-row="2" data-col="1" data-sizex="1" data-sizey="1"></li>
+        <li data-row="3" data-col="1" data-sizex="1" data-sizey="1"></li>
+         
+        <li data-row="1" data-col="2" data-sizex="2" data-sizey="1"></li>
+        <li data-row="2" data-col="2" data-sizex="2" data-sizey="2"></li>
+         
+        <li data-row="1" data-col="4" data-sizex="1" data-sizey="1"></li>
+        <li data-row="2" data-col="4" data-sizex="2" data-sizey="1"></li>
+        <li data-row="3" data-col="4" data-sizex="1" data-sizey="1"></li>
+         
+        <li data-row="1" data-col="5" data-sizex="1" data-sizey="1"></li>
+        <li data-row="3" data-col="5" data-sizex="1" data-sizey="1"></li>
+         
+        <li data-row="1" data-col="6" data-sizex="1" data-sizey="1"></li>
+        <li data-row="2" data-col="6" data-sizex="1" data-sizey="2"></li>
+      </ul>
+    </div>-->
+<!--    New version of the greenhouse web-console: <input type="text" name="date" id="date" />
+    <div id="subsystems_accordion">
+      <h1>Lighting subsystem</h1>
+      <div id="lighting_subsystem">
+        Lighting subsystem params are here
+      </div>
+      <h1>Heating subsystem</h1>
+      <div id="heating_subsystem">
+        Heating subsystem params are here
+      </div>
+    </div>-->
+  </body>
+</html>
+

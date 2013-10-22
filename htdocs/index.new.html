@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Greenhouse server WEB-console</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.3.custom.css" />
+    <!--<link rel="stylesheet" href="css/layout-default.css" />-->
+    <!--<link rel="stylesheet" href="css/jquery.gridster.css" />-->
+    <link rel="stylesheet" href="css/application.css" />
+    <!-- Scripts -->
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.js"></script>
+    <!--<script src="js/jquery.layout-1.2.0.js"></script>-->
+    <!-- // <script src="js/jquery.gridster.js"></script> -->
+    <script src="js/raphael.2.1.2.js"></script>
+    <!--<script src="js/raphael.2.1.0.min.js"></script>-->
+    <script src="js/justgage.1.0.1.js"></script>
+    <!-- // <script src="js/gauge.js"></script> -->
+    <!-- // <script src="js/jquery.gauge.js"></script> -->
+    <script src="js/application.js"></script>
+  </head>
+  <body>
+    <div id="content" style="overflow:auto; height:100%;">
+    <div id="header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 500 50" >
+        <defs>  
+          <linearGradient id="textgradient" x1="0%" x2="0%" y1="0%" y2="100%">  
+            <stop stop-color="#111" offset="0%"/>
+            <stop stop-color="#999" offset="100%"/>  
+          </linearGradient>  
+        </defs> 
+        <text x="1" y="41" font-size="30" fill="#eee">LIGHTING CONTROL SUBSYSTEM</text>
+        <text x="-1" y="39" font-size="30" fill="gray">LIGHTING CONTROL SUBSYSTEM</text>
+        <text x="0" y="40" font-size="30" fill="url(#textgradient)">LIGHTING CONTROL SUBSYSTEM</text>
+      </svg>
+      <!-- <object type="image/svg+xml" data="img/header.svg"
+      style="margin:auto; height:70%; width: 70%; display:block;">Your browser does not support SVG</object> -->
+    </div>
+    <div id="gauges">
+      <div id="CurrentLightIntensityGauge" class="large_gauge"></div>
+      <div id="DesiredLightIntensityGauge" class="large_gauge"></div>
+      <div id="LightSensorRegisterValueGauge" class="large_gauge"></div>
+      <div class="large_gauge" >
+        <div id="LampSupplyRegisterValueGauge" ></div>
+        <div id="manual">
+          <div id="checkboxLine">
+              <svg xmlns="http://www.w3.org/2000/svg" width="80%" height="30px" viewBox="0 0 200 16" style="float:left">
+              <text x="0" y="12" font-size="16" fill="black" >Manual lamp supply level</text>
+            </svg>
+            <!-- Manual lamp supply level -->
+            <!-- <input id="ManualLampSupplyLevelCheckbox" type="checkbox" /> -->
+            <button class="metal radial" id="ManualLampSupplyLevelCheckbox">✔</button>
+          </div>
+          <div id="sliderLine" >
+            <div style="display: table-row;">
+                <div style="display:table-cell; width: 100%;">
+                  <div id="ManualLampSupplyLevelSlider" class="slider"></div>
+                </div>
+                <div id="ManualLampSupplyLevelLabel">0</div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
+
